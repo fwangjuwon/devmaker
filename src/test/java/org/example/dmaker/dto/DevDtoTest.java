@@ -2,15 +2,21 @@ package org.example.dmaker.dto;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDateTime;
 
 class DevDtoTest {
     @Test
     void test(){
-        DevDto devDto = new DevDto();
+        DevDto devDto = DevDto.builder()
+                .name("gaeddo")
+                .age(30)
+                .startAt(LocalDateTime.now())
+                .build();
 
-        devDto.setName("juwon");
-        System.out.println(devDto.getName());
+        System.out.println(devDto);
+        devDto.printLog();
+
     }
+
 
 }
