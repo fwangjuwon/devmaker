@@ -1,10 +1,13 @@
 package org.example.dmaker.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.dmaker.service.DMakerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 //사용자의 입력이 최초로 받아들여지는 곳
@@ -14,13 +17,23 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 public class DMakerController {
 
+    private final DMakerService dmakerService;
     @GetMapping("/developers")
     public List<String> getAllDevelopers(){
         log.info("GET /developers HTTP/1.1");
 
         return Arrays.asList("gaeddo","juwon","bokrae");
 
+    }
+
+
+    @GetMapping("/create-developer")
+    public List<String> createDeveloper(){
+        log.info("GET /createDeveloper HTTP/1.1");
+        dmakerService.createDeveloper();
+        return Collections.singletonList("Olaf");
     }
 }
